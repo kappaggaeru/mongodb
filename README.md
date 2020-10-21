@@ -1,17 +1,16 @@
-## Actividad 2
 **Crear una nueva base de datos de un sistema de streaming de video**
-```json
+```js
 use flix
 ```
 **Crear una colección de "movies"**
-```json
+```js
 db.createCollection("movies")
 ```
 **Para cada movie, se debería guardar la siguiente información**
 _Título, Año, Puntaje, Género, Descripción, Actores [ ], País, Ganancias y Duración_
 
 **Agregar películas usando insert( )**
-```json
+```js
 db.movies.insert({
 	title:"Batman begins",
 	year:2005,
@@ -26,7 +25,7 @@ db.movies.insert({
 //output: WriteResult({ "nInserted" : 1 })
 ```
 **Agregar películas usando insertOne( )**
-```json
+```js
 db.movies.insertOne({
 	title:"Pulp Fiction",
 	year:1986,
@@ -45,7 +44,7 @@ db.movies.insertOne({
 //}
 ```
 **Agregar películas usando insertMany( )**
-```json
+```js
 db.movies.insertMany([
 {
 	title:"Lord of The Rings",
@@ -80,7 +79,7 @@ db.movies.insertMany([
 //}
 ```
 **Actualizar películas agregando el field highlighted=true a aquellas con rating > 4.5**
-```json
+```js
 db.movies.updateMany(
 {rating: {$gt: 4.5}},
 {
@@ -91,7 +90,7 @@ db.movies.updateMany(
 //output: { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
 ```
 **Actualizar películas cambiando el género “drama” por “bored”**
-```json
+```js
 db.movies.updateMany(
 {gender: "Action"},
 {
@@ -102,17 +101,17 @@ db.movies.updateMany(
 //output: { "acknowledged" : true, "matchedCount" : 4, "modifiedCount" : 4 }
 ```
 **Borrar todas las películas que tengan más de 30 años.**
-```json
+```js
 db.movies.find({year:{$gt: 1990}})
 //output: []
 ```
 **Buscar todas las películas argentinas.**
-```json
+```js
 db.movies.find({country: "US"})
 //output: []
 ```
 **Buscar todas las películas de acción con un buen rating (ej. > 4.0) que hayan salido los últimos 2 años.**
-```json
+```js
 db.movies.find({$and:[{gender:"Drama"},{rating:{$gt: 4.4}},{year:{$gt: 2018}}]})
 //output: []
 ```
